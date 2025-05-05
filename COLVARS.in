@@ -1,0 +1,304 @@
+colvar {
+name diffhb
+
+width                 0.03
+lowerboundary        -3.0
+upperboundary         3.0
+
+distance {
+  name x1
+  group1 { atomNumbers 3241 }
+  group2 { atomNumbers 73501 }
+  componentCoeff 0.25
+}
+distance {
+  name x2
+  group1 { atomNumbers 73502 }
+  group2 { atomNumbers 73507 }
+  componentCoeff 0.25
+}
+distance {
+  name x3
+  group1 { atomNumbers 73508 }
+  group2 { atomNumbers 73504 }
+  componentCoeff 0.25
+}
+distance {
+  name x4
+  group1 { atomNumbers 73506 }
+  group2 { atomNumbers 2408 }
+  componentCoeff 0.25
+}
+
+distance {
+  name y1
+  group1 { atomNumbers 3240 }
+  group2 { atomNumbers 3241 }
+  componentCoeff -0.25
+}
+distance {
+  name y2
+  group1 { atomNumbers 73501 }
+  group2 { atomNumbers 73502 }
+  componentCoeff -0.25
+}
+distance {
+  name y3
+  group1 { atomNumbers 73507 }
+  group2 { atomNumbers 73508 }
+  componentCoeff -0.25
+}
+distance {
+  name y4
+  group1 { atomNumbers 73504 }
+  group2 { atomNumbers 73506 }
+  componentCoeff -0.25
+}
+}
+
+colvar {
+name dx1
+ distance {
+  group1 { atomNumbers 3241 }
+  group2 { atomNumbers 73501 }
+ }
+}
+
+colvar {
+name dx2
+ distance {
+  group1 { atomNumbers 73502 }
+  group2 { atomNumbers 73507 }
+ }
+}
+
+colvar {
+name dx3
+ distance {
+  group1 { atomNumbers 73508 }
+  group2 { atomNumbers 73504 }
+ }
+}
+
+colvar {
+name dx4
+ distance {
+  group1 { atomNumbers 73506 }
+  group2 { atomNumbers 2408 }
+ }
+}
+ 
+colvar {
+name dy1
+ distance {
+  group1 { atomNumbers 3240 }
+  group2 { atomNumbers 3241 }
+ }
+}
+
+colvar {
+name dy2
+ distance {
+  group1 { atomNumbers 73501 }
+  group2 { atomNumbers 73502 }
+ }
+}
+
+colvar {
+name dy3
+ distance {
+  group1 { atomNumbers 73507 }
+  group2 { atomNumbers 73508 }
+ }
+}
+
+colvar {
+name dy4
+ distance {
+  group1 { atomNumbers 73504 }
+  group2 { atomNumbers 73506 }
+ }
+}
+
+colvar {
+name dl1
+ distance {
+  group1 { atomNumbers 73501 }
+  group2 { atomNumbers 73503 }
+ }
+}
+
+colvar {
+name dl2
+ distance {
+  group1 { atomNumbers 73507 }
+  group2 { atomNumbers 73509 }
+ }
+}
+
+colvar {
+name dl3
+ distance {
+  group1 { atomNumbers 73504 }
+  group2 { atomNumbers 73505 }
+ }
+}
+
+colvar {
+name ex1
+ coordNum {
+  group1 { atomNumbers 73506 }
+  group2 { atomNumbers 2407 73507 73501 3239 3240 }
+  cutoff 1.5
+ }
+}
+
+colvar {
+name ex2
+ coordNum {
+  group1 { atomNumbers 73508 }
+  group2 { atomNumbers 2407 2408 73501 3239 3240 }
+  cutoff 1.5
+ }
+}
+
+colvar {
+name ex3
+ coordNum {
+  group1 { atomNumbers 73502 }
+  group2 { atomNumbers 2407 2408 73504 3239 3240 }
+  cutoff 1.5
+ }
+}
+
+colvar {
+name ex4
+ coordNum {
+  group1 { atomNumbers 3241 }
+  group2 { atomNumbers 2407 2408 73507 73504 3239 }
+  cutoff 1.25
+ }
+}
+
+harmonicWalls {
+name wx1
+colvars dx1
+upperWalls 2.5
+upperWallConstant 500.0
+}
+
+harmonicWalls {
+name wx2
+colvars dx2
+upperWalls 2.5
+upperWallConstant 500.0
+}
+
+harmonicWalls {
+name wx3
+colvars dx3
+upperWalls 2.5
+upperWallConstant 500.0
+}
+
+harmonicWalls {
+name wx4
+colvars dx4
+upperWalls 2.5
+upperWallConstant 500.0
+}
+
+harmonicWalls {
+name wy1
+colvars dy1
+upperWalls 2.5
+upperWallConstant 500.0
+}
+
+harmonicWalls {
+name wy2
+colvars dy2
+upperWalls 2.5
+upperWallConstant 500.0
+}
+
+harmonicWalls {
+name wy3
+colvars dy3
+upperWalls 2.5
+upperWallConstant 500.0
+}
+
+harmonicWalls {
+name wy4
+colvars dy4
+upperWalls 2.5
+upperWallConstant 500.0
+}
+
+harmonicWalls {
+name wl1
+colvars dl1
+upperWalls 1.1
+upperWallConstant 1500.0
+}
+
+harmonicWalls {
+name wl2
+colvars dl2
+upperWalls 1.1
+upperWallConstant 1500.0
+}
+
+harmonicWalls {
+name wl3
+colvars dl3
+upperWalls 1.1
+upperWallConstant 1500.0
+}
+
+harmonicWalls {
+name wex1
+colvars ex1
+upperWalls 0.1
+upperWallConstant 150.0
+}
+
+harmonicWalls {
+name wex2
+colvars ex2
+upperWalls 0.1
+upperWallConstant 150.0
+}
+
+harmonicWalls {
+name wex3
+colvars ex3
+upperWalls 0.1
+upperWallConstant 150.0
+}
+
+harmonicWalls {
+name wex4
+colvars ex4
+upperWalls 0.1
+upperWallConstant 150.0
+}
+
+
+metadynamics {
+  name diffhbmd
+  colvars diffhb
+  hillWeight 0.5
+  useGrids on
+  # rebinGrids on
+  newHillFrequency 5
+  writeFreeEnergyFile yes
+  writeHillsTrajectory yes
+  gaussianSigmas 0.3
+  outputFreq 5
+  outputEnergy yes
+}
+
+colvarsTrajFrequency 1
+colvarsRestartFrequency 1
